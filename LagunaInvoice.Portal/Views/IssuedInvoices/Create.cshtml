@@ -1,0 +1,207 @@
+﻿@model LagunaInvoice.Portal.Data.Entities.IssuedInvoice
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Vystavit fakturu</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">General Form</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <form id="im-invoice-form">
+            <div class="row justify-content-center">
+                <div class="col-md-9">
+                    <h5 class="mt-4 mb-2">Záhlaví faktury</h5>
+                    <!-- general form elements -->
+                    <div class="card card-purple card-outline">
+                        <div class="card-header p-0 pt-1 border-bottom-0"></div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="ContactID" class="control-label"></label>
+                                        <select asp-for="ContactID" class="form-control" asp-items="ViewBag.ContactID"></select>
+                                        <span asp-validation-for="ContactID" class="text-danger"></span>
+                                    </div>
+                                    <!-- Tady způsob úhrady a účet -->
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- time Picker -->
+                                    <div class="bootstrap-timepicker">
+                                        <div class="form-group">
+                                            <label asp-for="DateIssued" class="control-label"></label>
+                                            <div class="input-group" id="timepicker" data-target-input="nearest">
+                                                @*<input type="text" class="form-control im-datetimepicker" data-target="#timepicker" />*@
+                                                <input type="text" asp-for="DateIssued" class="form-control im-datetimepicker" />
+                                                <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                </div>
+                                            </div>
+                                            <span asp-validation-for="DateIssued" class="text-danger"></span>
+                                            <!-- /.input group -->
+                                        </div>
+                                        <!-- /.form group -->
+                                    </div>
+                                    <!-- time Picker -->
+                                    <div class="bootstrap-timepicker">
+                                        <div class="form-group">
+                                            <label asp-for="DateVAT" class="control-label"></label>
+                                            <div class="input-group" id="timepicker" data-target-input="nearest">
+                                                @*<input type="text" class="form-control im-datetimepicker" data-target="#timepicker" />*@
+                                                <input type="text" asp-for="DateVAT" class="form-control im-datetimepicker" />
+                                                <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                </div>
+                                            </div>
+                                            <span asp-validation-for="DateVAT" class="text-danger"></span>
+                                            <!-- /.input group -->
+                                        </div>
+                                        <!-- /.form group -->
+                                    </div>
+                                    <!-- time Picker -->
+                                    <div class="bootstrap-timepicker">
+                                        <div class="form-group">
+                                            <label asp-for="DateDue" class="control-label"></label>
+                                            <div class="input-group" id="timepicker" data-target-input="nearest">
+                                                @*<input type="text" class="form-control im-datetimepicker" data-target="#timepicker" />*@
+                                                <input type="text" asp-for="DateDue" class="form-control im-datetimepicker" />
+                                                <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                                </div>
+                                            </div>
+                                            <span asp-validation-for="DateDue" class="text-danger"></span>
+                                            <!-- /.input group -->
+                                        </div>
+                                        <!-- /.form group -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <div class="col-md-9">
+                    <h5 class="mt-4 mb-2">Položky faktury</h5>
+                    <!-- general form elements -->
+                    <div class="card card-purple card-outline">
+                        <div class="card-header p-0 pt-1 border-bottom-0"></div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Položka</th>
+                                        <th style="width: 20px;" class="text-nowrap">Jedn. cena</th>
+                                        <th style="width: 100px;">DPH</th>
+                                        <th style="width: 20px;">Množství</th>
+                                        <th style="width: 20px;">Jednotka</th>
+                                        <th>Celkem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <partial name="_InvoiceItemPartial" view-data="ViewData" />
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <div class="col-md-9">
+                    <h5 class="mt-4 mb-2">Souhrn</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- general form elements -->
+                            <div class="card card-purple h-100 card-outline card-outline-tabs">
+                                <div class="card-header d-flex p-0">
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">@Html.DisplayNameFor(model => model.NotePublic)</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">@Html.DisplayNameFor(model => model.NoteInternal)</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">@Html.DisplayNameFor(model => model.Footer)</a></li>
+                                    </ul>
+                                </div><!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_1">
+                                            <textarea asp-for="NotePublic" class="form-control" rows="6"></textarea>
+                                            <span asp-validation-for="NotePublic" class="text-danger"></span>
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                        <div class="tab-pane" id="tab_2">
+                                            <textarea asp-for="NoteInternal" class="form-control" rows="6"></textarea>
+                                            <span asp-validation-for="NoteInternal" class="text-danger"></span>
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                        <div class="tab-pane" id="tab_3">
+                                            <textarea asp-for="Footer" class="form-control" rows="6"></textarea>
+                                            <span asp-validation-for="Footer" class="text-danger"></span>
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div><!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <div class="col-md-6">
+                            <!-- general form elements -->
+                            <div class="card card-primary h-100">
+                                <div class="card-header">
+                                    <h3 class="card-title">Souhrn</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">Cena bez DPH: <span class="float-right">0 Kč</span></div>
+                                        <div class="col-12">DPH: <span class="float-right">0 Kč</span></div>
+                                        <div class="col-12">Cena vč. DPH: <span class="float-right">0 Kč</span></div>
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card mt-5">
+                        <div class="card-body">
+                            <a class="btn btn-app mb-0">
+                                <i class="fas fa-times"></i> Smazat
+                            </a>
+                            <a class="btn btn-app mb-0">
+                                <i class="fas fa-file-pdf"></i> PDF
+                            </a>
+                            <button type="submit" class="btn btn-app mb-0 float-right">
+                                <i class="fas fa-save"></i> Uložit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

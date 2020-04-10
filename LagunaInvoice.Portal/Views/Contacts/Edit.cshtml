@@ -1,0 +1,84 @@
+﻿@model LagunaInvoice.Portal.Data.Entities.Contact
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Contact</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="CompanyID" class="control-label"></label>
+                <select asp-for="CompanyID" class="form-control" asp-items="ViewBag.CompanyID"></select>
+                <span asp-validation-for="CompanyID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DefaultTaxID" class="control-label"></label>
+                <select asp-for="DefaultTaxID" class="form-control" asp-items="ViewBag.DefaultTaxID"></select>
+                <span asp-validation-for="DefaultTaxID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublicNote" class="control-label"></label>
+                <input asp-for="PublicNote" class="form-control" />
+                <span asp-validation-for="PublicNote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoicingStreet" class="control-label"></label>
+                <input asp-for="InvoicingStreet" class="form-control" />
+                <span asp-validation-for="InvoicingStreet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoicingCity" class="control-label"></label>
+                <input asp-for="InvoicingCity" class="form-control" />
+                <span asp-validation-for="InvoicingCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoicingZIP" class="control-label"></label>
+                <input asp-for="InvoicingZIP" class="form-control" />
+                <span asp-validation-for="InvoicingZIP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDNumber" class="control-label"></label>
+                <input asp-for="IDNumber" class="form-control" />
+                <span asp-validation-for="IDNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VATNumber" class="control-label"></label>
+                <input asp-for="VATNumber" class="form-control" />
+                <span asp-validation-for="VATNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WWW" class="control-label"></label>
+                <input asp-for="WWW" class="form-control" />
+                <span asp-validation-for="WWW" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

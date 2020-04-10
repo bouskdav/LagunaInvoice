@@ -1,0 +1,82 @@
+﻿@model LagunaInvoice.Portal.Data.Entities.IssuedInvoiceItem
+
+<tr>
+    <td>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </td>
+    <td>
+        <input asp-for="UnitPrice" class="form-control" />
+        <span asp-validation-for="UnitPrice" class="text-danger"></span>
+    </td>
+    <td>
+        <select asp-for="TaxID" class="form-control" asp-items="ViewBag.TaxID"></select>
+        <span asp-validation-for="TaxID" class="text-danger"></span>
+    </td>
+    <td>
+        <input asp-for="Quantity" class="form-control" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </td>
+    <td>
+        <input asp-for="Units" class="form-control" />
+        <span asp-validation-for="Units" class="text-danger"></span>
+    </td>
+    <td>
+
+    </td>
+</tr>
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="_InvoiceItemPartial">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IsssuedInvoiceID" class="control-label"></label>
+                <input asp-for="IsssuedInvoiceID" class="form-control" />
+                <span asp-validation-for="IsssuedInvoiceID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaxID" class="control-label"></label>
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitPrice" class="control-label"></label>
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="Units" class="control-label"></label>
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceVATExcl" class="control-label"></label>
+                <input asp-for="PriceVATExcl" class="form-control" />
+                <span asp-validation-for="PriceVATExcl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceVATPart" class="control-label"></label>
+                <input asp-for="PriceVATPart" class="form-control" />
+                <span asp-validation-for="PriceVATPart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceVATIncl" class="control-label"></label>
+                <input asp-for="PriceVATIncl" class="form-control" />
+                <span asp-validation-for="PriceVATIncl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

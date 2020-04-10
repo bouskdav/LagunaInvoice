@@ -1,0 +1,69 @@
+﻿@model LagunaInvoice.Portal.Data.Entities.IssuedInvoice
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>IssuedInvoice</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="ContactID" class="control-label"></label>
+                <select asp-for="ContactID" class="form-control" asp-items="ViewBag.ContactID"></select>
+                <span asp-validation-for="ContactID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateIssued" class="control-label"></label>
+                <input asp-for="DateIssued" class="form-control" />
+                <span asp-validation-for="DateIssued" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateDue" class="control-label"></label>
+                <input asp-for="DateDue" class="form-control" />
+                <span asp-validation-for="DateDue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateVAT" class="control-label"></label>
+                <input asp-for="DateVAT" class="form-control" />
+                <span asp-validation-for="DateVAT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NotePublic" class="control-label"></label>
+                <input asp-for="NotePublic" class="form-control" />
+                <span asp-validation-for="NotePublic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoteInternal" class="control-label"></label>
+                <input asp-for="NoteInternal" class="form-control" />
+                <span asp-validation-for="NoteInternal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Footer" class="control-label"></label>
+                <input asp-for="Footer" class="form-control" />
+                <span asp-validation-for="Footer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
